@@ -33,11 +33,8 @@ class Settings {
   }
 
   getSet() {
-    return this.defaultMap;
+    return Array.from(this.defaultMap);
   }
 }
 
-const settin = new Settings('pop');
-console.log(settin.getSet());
-
-//  export default Settings;
+export default Settings;
