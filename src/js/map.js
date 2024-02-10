@@ -1,16 +1,16 @@
 class Settings {
   constructor(...value) {
-    this.allThemeOptions = ['dark', 'light', 'gray'];
-    this.allMusicOptions = ['trance', 'pop', 'rock', 'chillout', 'off'];
-    this.allDifficultyOptions = ['easy', 'normal', 'hard', 'nightmare'];
     this.defaultMap = new Map();
-    if (value) {
+    if (value.length !== 0) {
+      const allThemeOptions = ['dark', 'light', 'gray'];
+      const allMusicOptions = ['trance', 'pop', 'rock', 'chillout', 'off'];
+      const allDifficultyOptions = ['easy', 'normal', 'hard', 'nightmare'];
       value.forEach((item) => {
-        if (this.allThemeOptions.includes(item)) {
+        if (allThemeOptions.includes(item)) {
           this.defaultMap.set('theme', item);
-        } else if (this.allMusicOptions.includes(item)) {
+        } else if (allMusicOptions.includes(item)) {
           this.defaultMap.set('music', item);
-        } else if (this.allDifficultyOptions.includes(item)) {
+        } else if (allDifficultyOptions.includes(item)) {
           this.defaultMap.set('difficulty', item);
         } else {
           throw new Error(`Одно из введённых Вами значений не соответсвует доступным настройкам. 
@@ -26,9 +26,9 @@ class Settings {
         }
       });
     } else {
-      this.defaultMap.set(['theme', 'dark']);
-      this.defaultMap.set(['music', 'trance']);
-      this.defaultMap.set(['difficulty', 'easy']);
+      this.defaultMap.set('theme', 'dark');
+      this.defaultMap.set('music', 'trance');
+      this.defaultMap.set('difficulty', 'easy');
     }
   }
 
@@ -37,7 +37,7 @@ class Settings {
   }
 }
 
-const settin = new Settings('dark', 'rock');
+const settin = new Settings('pop');
 console.log(settin.getSet());
 
 //  export default Settings;
